@@ -17,18 +17,38 @@
 	}
 
 	</style>
-	
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="app">
 
-	<form>
-		<div class="form-group">
-			<label>Task Name</label>
-			<input type="text" class="form-control"></input>
+	
+
+	<form method="post">
+
+		<div class="row">
+			<div class="col">
+				<div class="form-group">
+					<label>Task Name</label>
+					<input v-model="item" type="text" name="taskName" class="form-control"></input>
+				</div>
 		</div>
+		<div class="col">
+			<div class="form-group">
+				<label>Due Date</label>
+				<input type="date" name="taskDate" class="form-control"></input>
+			</div>
+		</div>
+	</div>
 
-		<button class="btn btn-primary btn-block">Add Task</button>
+		
+
+		
+
+
+		<button v-on:click="addTodo"type="button" class="btn btn-primary btn-block">Add Task</button>
 
 
 
@@ -37,20 +57,8 @@
 		<hr>
 
 		<h3>Todo Items</h3>
-		<ul class="list-group">
-			<li  class="list-group-item d-flex justify-content-between align-items-center">JavaScript 
-				<span class="badge badge-primary badge-pill">day 1</span></li>
-			<!-- <li  class="list-group-item d-flex justify-content-between align-items-center">Watch Arsenal match
-				<span class="badge badge-primary badge-pill">day 2</span></li>
-			<li  class="list-group-item d-flex justify-content-between align-items-center">Wash Clothes
-				 <span class="badge badge-primary badge-pill">day 3</span></li>
-
-			<li  class="list-group-item d-flex justify-content-between align-items-center">Go to church
-				<span class="badge badge-primary badge-pill">day 4</span></li>
-
-			<li  class="list-group-item d-flex justify-content-between align-items-center">Do community service
-				<span class="badge badge-primary badge-pill">day 5</span></li> -->
-
+		<ul>
+			<li v-for="todo in todos">{{ todo }}</li>
 		</ul>
 	</div>
 
